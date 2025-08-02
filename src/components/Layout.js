@@ -38,6 +38,7 @@ import Reference from '../pages/Reference';
 import Support from '../pages/Support';
 import TermsOfService from '../pages/TermsOfService';
 import Authentication from '../pages/Authentication';
+import MessagingFlow from '../pages/MessagingFlow';
 
 const Placeholder = ({ title }) => <Typography variant="h4">{title}</Typography>;
 
@@ -150,6 +151,8 @@ export default function Layout() {
               element = <TermsOfService />;
             } else if (item.path === '/authentication') {
               element = <Authentication />;
+            } else if (item.path === '/messaging-flow') {
+              element = <MessagingFlow />;
             }
             return <Route key={index} path={item.path} element={element} />;
           })}
