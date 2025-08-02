@@ -11,7 +11,7 @@ function App() {
   useEffect(() => {
     const params = new URLSearchParams(location.search);
     const redirectedPath = params.get('path');
-    if (redirectedPath) {
+    if (redirectedPath && redirectedPath !== '/') { // Only navigate if a valid path is present
       navigate(decodeURIComponent(redirectedPath), { replace: true });
     }
   }, [location.search, navigate]);
