@@ -26,6 +26,7 @@ import Brands from '../pages/Brands';
 import Users from '../pages/Users';
 import Test from '../pages/Test';
 import Deploy from '../pages/Deploy';
+import Verification from '../pages/Verification';
 
 const Placeholder = ({ title }) => <Typography variant="h4">{title}</Typography>;
 
@@ -109,6 +110,8 @@ export default function Layout() {
               element = <Test />;
             } else if (item.path === '/deploy') {
               element = <Deploy />;
+            } else if (item.path === '/verification') {
+              element = <Verification />;
             }
             return <Route key={index} path={item.path} element={element} />;
           })}
