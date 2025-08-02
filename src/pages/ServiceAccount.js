@@ -8,17 +8,39 @@ import FileCopyIcon from '@mui/icons-material/FileCopy';
 import IconButton from '@mui/material/IconButton';
 import InputAdornment from '@mui/material/InputAdornment';
 
-// Placeholder function to simulate generating an API key
-const generateApiKey = () => {
-  return 'RCS-KEY-' + Math.random().toString(36).substr(2, 16).toUpperCase();
+// Function to simulate generating an API key via the mock backend
+const generateApiKey = async () => {
+  try {
+    const response = await fetch('http://localhost:5000/api/generate-api-key', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+
+    const data = await response.json();
+
+    if (data.success) {
+      return data.apiKey;
+    } else {
+      alert(data.message || 'Failed to generate API key');
+      return null;
+    }
+  } catch (error) {
+    console.error('Error generating API key:', error);
+    alert('An error occurred while generating the API key. Please check the backend server.');
+    return null;
+  }
 };
 
 export default function ServiceAccount() {
   const [apiKey, setApiKey] = useState('');
 
-  const handleGenerateKey = () => {
-    const newKey = generateApiKey();
-    setApiKey(newKey);
+  const handleGenerateKey = async () => {
+    const newKey = await generateApiKey();
+    if (newKey) {
+      setApiKey(newKey);
+    }
   };
 
   const handleCopyToClipboard = () => {
