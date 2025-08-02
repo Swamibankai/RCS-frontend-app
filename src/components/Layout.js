@@ -34,6 +34,7 @@ import AgentHistory from '../pages/AgentHistory';
 import Documentation from '../pages/Documentation';
 import Guides from '../pages/Guides';
 import Samples from '../pages/Samples';
+import Reference from '../pages/Reference';
 
 const Placeholder = ({ title }) => <Typography variant="h4">{title}</Typography>;
 
@@ -138,6 +139,8 @@ export default function Layout() {
               element = <Guides />;
             } else if (item.path === '/samples') {
               element = <Samples />;
+            } else if (item.path === '/reference') {
+              element = <Reference />;
             }
             return <Route key={index} path={item.path} element={element} />;
           })}
