@@ -1,6 +1,6 @@
 
 import * as React from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Link } from 'react-router-dom';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -78,7 +78,7 @@ export default function Layout() {
         <List>
           {mainMenuItems.map((item, index) => (
             <ListItem key={item.text} disablePadding>
-              <ListItemButton component="a" href={item.path}>
+              <ListItemButton component={Link} to={item.path}>
                 <ListItemIcon>{item.icon}</ListItemIcon>
                 <ListItemText primary={item.text} />
               </ListItemButton>
@@ -89,7 +89,7 @@ export default function Layout() {
         <List>
           {secondaryMenuItems.map((item, index) => (
             <ListItem key={item.text} disablePadding>
-              <ListItemButton component="a" href={item.path}>
+              <ListItemButton component={Link} to={item.path}>
                 <ListItemIcon>{item.icon}</ListItemIcon>
                 <ListItemText primary={item.text} />
               </ListItemButton>
