@@ -20,6 +20,7 @@ import ServiceAccount from '../pages/ServiceAccount';
 import Devices from '../pages/Devices';
 import AgentInformation from '../pages/AgentInformation';
 import Integrations from '../pages/Integrations';
+import PartnerAccount from '../pages/PartnerAccount';
 
 const Placeholder = ({ title }) => <Typography variant="h4">{title}</Typography>;
 
@@ -91,6 +92,8 @@ export default function Layout() {
               element = <AgentInformation />;
             } else if (item.path === '/integrations') {
               element = <Integrations />;
+            } else if (item.path === '/partner-account') {
+              element = <PartnerAccount />;
             }
             return <Route key={index} path={item.path} element={element} />;
           })}
