@@ -39,6 +39,7 @@ import Support from '../pages/Support';
 import TermsOfService from '../pages/TermsOfService';
 import Authentication from '../pages/Authentication';
 import MessagingFlow from '../pages/MessagingFlow';
+import Webhook from '../pages/Webhook';
 
 const Placeholder = ({ title }) => <Typography variant="h4">{title}</Typography>;
 
@@ -153,6 +154,8 @@ export default function Layout() {
               element = <Authentication />;
             } else if (item.path === '/messaging-flow') {
               element = <MessagingFlow />;
+            } else if (item.path === '/webhook') {
+              element = <Webhook />;
             }
             return <Route key={index} path={item.path} element={element} />;
           })}
