@@ -1,0 +1,91 @@
+
+import * as React from 'react';
+import { Routes, Route } from 'react-router-dom';
+import Box from '@mui/material/Box';
+import Drawer from '@mui/material/Drawer';
+import CssBaseline from '@mui/material/CssBaseline';
+import AppBar from '@mui/material/AppBar';
+import Toolbar from '@mui/material/Toolbar';
+import List from '@mui/material/List';
+import Typography from '@mui/material/Typography';
+import Divider from '@mui/material/Divider';
+import ListItem from '@mui/material/ListItem';
+import ListItemButton from '@mui/material/ListItemButton';
+import ListItemIcon from '@mui/material/ListItemIcon';
+import ListItemText from '@mui/material/ListItemText';
+import { mainMenuItems, secondaryMenuItems } from './MenuItems';
+
+// Placeholder components for pages
+import Devices from '../pages/Devices';
+
+const Placeholder = ({ title }) => <Typography variant="h4">{title}</Typography>;
+
+const drawerWidth = 240;
+
+export default function Layout() {
+  return (
+    <Box sx={{ display: 'flex' }}>
+      <CssBaseline />
+      <AppBar
+        position="fixed"
+        sx={{ width: `calc(100% - ${drawerWidth}px)`, ml: `${drawerWidth}px` }}
+      >
+        <Toolbar>
+          <Typography variant="h6" noWrap component="div">
+            RCS Business Messaging
+          </Typography>
+        </Toolbar>
+      </AppBar>
+      <Drawer
+        sx={{
+          width: drawerWidth,
+          flexShrink: 0,
+          '& .MuiDrawer-paper': {
+            width: drawerWidth,
+            boxSizing: 'border-box',
+          },
+        }}
+        variant="permanent"
+        anchor="left"
+      >
+        <Toolbar />
+        <Divider />
+        <List>
+          {mainMenuItems.map((item, index) => (
+            <ListItem key={item.text} disablePadding>
+              <ListItemButton component="a" href={item.path}>
+                <ListItemIcon>{item.icon}</ListItemIcon>
+                <ListItemText primary={item.text} />
+              </ListItemButton>
+            </ListItem>
+          ))}
+        </List>
+        <Divider />
+        <List>
+          {secondaryMenuItems.map((item, index) => (
+            <ListItem key={item.text} disablePadding>
+              <ListItemButton component="a" href={item.path}>
+                <ListItemIcon>{item.icon}</ListItemIcon>
+                <ListItemText primary={item.text} />
+              </ListItemButton>
+            </ListItem>
+          ))}
+        </List>
+      </Drawer>
+      <Box
+        component="main"
+        sx={{ flexGrow: 1, bgcolor: 'background.default', p: 3 }}
+      >
+        <Toolbar />
+        <Routes>
+          {mainMenuItems.map((item, index) => (
+            <Route key={index} path={item.path} element={item.path === '/devices' ? <Devices /> : <Placeholder title={item.text} />} />
+          ))}
+          {secondaryMenuItems.map((item, index) => (
+            <Route key={index} path={item.path} element={<Placeholder title={item.text} />} />
+          ))}
+        </Routes>
+      </Box>
+    </Box>
+  );
+}
