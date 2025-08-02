@@ -31,6 +31,7 @@ import Launch from '../pages/Launch';
 import Manage from '../pages/Manage';
 import Analytics from '../pages/Analytics';
 import AgentHistory from '../pages/AgentHistory';
+import Documentation from '../pages/Documentation';
 
 const Placeholder = ({ title }) => <Typography variant="h4">{title}</Typography>;
 
@@ -127,9 +128,13 @@ export default function Layout() {
             }
             return <Route key={index} path={item.path} element={element} />;
           })}
-          {secondaryMenuItems.map((item, index) => (
-            <Route key={index} path={item.path} element={<Placeholder title={item.text} />} />
-          ))}
+          {secondaryMenuItems.map((item, index) => {
+            let element = <Placeholder title={item.text} />;
+            if (item.path === '/documentation') {
+              element = <Documentation />;
+            }
+            return <Route key={index} path={item.path} element={element} />;
+          })}
         </Routes>
       </Box>
     </Box>
