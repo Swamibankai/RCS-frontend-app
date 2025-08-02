@@ -5,11 +5,28 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 
-// Placeholder function for sending a test message
-const sendTestRcsMessage = (device, message) => {
-  console.log(`Sending message to ${device}: ${message}`);
-  // In a real application, this would make an API call
-  alert(`Message sent to ${device}`);
+// Function to send a test message via the mock backend
+const sendTestRcsMessage = async (device, message) => {
+  try {
+    const response = await fetch('http://localhost:5000/api/send-message', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ device, message }),
+    });
+
+    const data = await response.json();
+
+    if (data.success) {
+      alert(data.message);
+    } else {
+      alert(data.message || 'Failed to send message');
+    }
+  } catch (error) {
+    console.error('Error sending message:', error);
+    alert('An error occurred while sending the message. Please check the backend server.');
+  }
 };
 
 export default function Devices() {
