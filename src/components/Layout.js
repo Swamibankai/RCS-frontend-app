@@ -18,6 +18,7 @@ import { mainMenuItems, secondaryMenuItems } from './MenuItems';
 // Placeholder components for pages
 import ServiceAccount from '../pages/ServiceAccount';
 import Devices from '../pages/Devices';
+import AgentInformation from '../pages/AgentInformation';
 
 const Placeholder = ({ title }) => <Typography variant="h4">{title}</Typography>;
 
@@ -85,6 +86,8 @@ export default function Layout() {
               element = <Devices />;
             } else if (item.path === '/service-account') {
               element = <ServiceAccount />;
+            } else if (item.path === '/agent-information') {
+              element = <AgentInformation />;
             }
             return <Route key={index} path={item.path} element={element} />;
           })}
