@@ -35,6 +35,7 @@ import Documentation from '../pages/Documentation';
 import Guides from '../pages/Guides';
 import Samples from '../pages/Samples';
 import Reference from '../pages/Reference';
+import Support from '../pages/Support';
 
 const Placeholder = ({ title }) => <Typography variant="h4">{title}</Typography>;
 
@@ -141,6 +142,8 @@ export default function Layout() {
               element = <Samples />;
             } else if (item.path === '/reference') {
               element = <Reference />;
+            } else if (item.path === '/support') {
+              element = <Support />;
             }
             return <Route key={index} path={item.path} element={element} />;
           })}
