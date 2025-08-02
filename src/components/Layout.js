@@ -32,6 +32,7 @@ import Manage from '../pages/Manage';
 import Analytics from '../pages/Analytics';
 import AgentHistory from '../pages/AgentHistory';
 import Documentation from '../pages/Documentation';
+import Guides from '../pages/Guides';
 
 const Placeholder = ({ title }) => <Typography variant="h4">{title}</Typography>;
 
@@ -132,6 +133,8 @@ export default function Layout() {
             let element = <Placeholder title={item.text} />;
             if (item.path === '/documentation') {
               element = <Documentation />;
+            } else if (item.path === '/guides') {
+              element = <Guides />;
             }
             return <Route key={index} path={item.path} element={element} />;
           })}
