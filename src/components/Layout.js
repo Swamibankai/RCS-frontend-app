@@ -40,6 +40,7 @@ import TermsOfService from '../pages/TermsOfService';
 import Authentication from '../pages/Authentication';
 import MessagingFlow from '../pages/MessagingFlow';
 import Webhook from '../pages/Webhook';
+import RbmApiInteractionFlow from '../pages/RbmApiInteractionFlow';
 
 const Placeholder = ({ title }) => <Typography variant="h4">{title}</Typography>;
 
@@ -156,6 +157,8 @@ export default function Layout() {
               element = <MessagingFlow />;
             } else if (item.path === '/webhook') {
               element = <Webhook />;
+            } else if (item.path === '/rbm-api-interaction-flow') {
+              element = <RbmApiInteractionFlow />;
             }
             return <Route key={index} path={item.path} element={element} />;
           })}
