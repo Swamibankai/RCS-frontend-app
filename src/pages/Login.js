@@ -13,13 +13,30 @@ export default function Login({ onLogin }) {
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    if (userId === 'swaminathan.arunachalam@panamaxil.com' && password === 'Swami123@') {
-      onLogin();
-      navigate('/'); // Redirect to the main app
-    } else {
-      alert('Invalid credentials');
+    try {
+      const response = await fetch('http://localhost:5000/api/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ userId, password }),
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        // In a real app, you'd store the token (data.token) in localStorage or context
+        console.log('Login successful, token:', data.token);
+        onLogin();
+        navigate('/'); // Redirect to the main app
+      } else {
+        alert(data.message || 'Login failed');
+      }
+    } catch (error) {
+      console.error('Error during login:', error);
+      alert('An error occurred during login. Please try again.');
     }
   };
 
