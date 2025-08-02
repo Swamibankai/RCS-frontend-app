@@ -19,6 +19,7 @@ import { mainMenuItems, secondaryMenuItems } from './MenuItems';
 import ServiceAccount from '../pages/ServiceAccount';
 import Devices from '../pages/Devices';
 import AgentInformation from '../pages/AgentInformation';
+import Integrations from '../pages/Integrations';
 
 const Placeholder = ({ title }) => <Typography variant="h4">{title}</Typography>;
 
@@ -88,6 +89,8 @@ export default function Layout() {
               element = <ServiceAccount />;
             } else if (item.path === '/agent-information') {
               element = <AgentInformation />;
+            } else if (item.path === '/integrations') {
+              element = <Integrations />;
             }
             return <Route key={index} path={item.path} element={element} />;
           })}
