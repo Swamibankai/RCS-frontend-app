@@ -30,6 +30,7 @@ import Verification from '../pages/Verification';
 import Launch from '../pages/Launch';
 import Manage from '../pages/Manage';
 import Analytics from '../pages/Analytics';
+import AgentHistory from '../pages/AgentHistory';
 
 const Placeholder = ({ title }) => <Typography variant="h4">{title}</Typography>;
 
@@ -121,6 +122,8 @@ export default function Layout() {
               element = <Manage />;
             } else if (item.path === '/analytics') {
               element = <Analytics />;
+            } else if (item.path === '/agent-history') {
+              element = <AgentHistory />;
             }
             return <Route key={index} path={item.path} element={element} />;
           })}
