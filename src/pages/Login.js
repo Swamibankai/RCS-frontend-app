@@ -15,11 +15,12 @@ export default function Login({ onLogin }) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    // Here you would typically call an authentication API
-    // For this prototype, we'll just simulate a successful login
-    console.log({ userId, password });
-    onLogin();
-    navigate('/'); // Redirect to the main app
+    if (userId === 'swaminathan.arunachalam@panamaxil.com' && password === 'Swami123@') {
+      onLogin();
+      navigate('/'); // Redirect to the main app
+    } else {
+      alert('Invalid credentials');
+    }
   };
 
   return (
