@@ -4,13 +4,13 @@
     <meta charset="utf-8">
     <title>Redirecting...</title>
     <script type="text/javascript">
-      // Get the base URL from the current path
-      var pathSegments = window.location.pathname.split('/');
-      var repoName = pathSegments[1]; // Assuming the repo name is the second segment
-      var baseUrl = window.location.protocol + '//' + window.location.host + '/' + repoName + '/';
+      // Get the current path, excluding the base URL (repo name)
+      var path = window.location.pathname;
+      var repoName = '/RCS-frontend-app'; // Your repository name
+      var relativePath = path.substring(repoName.length);
 
-      // Redirect to the base URL
-      window.location.replace(baseUrl);
+      // Redirect to index.html with the original path as a query parameter
+      window.location.replace(repoName + '/index.html?path=' + encodeURIComponent(relativePath));
     </script>
   </head>
   <body>
