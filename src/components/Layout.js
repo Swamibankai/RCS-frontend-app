@@ -33,6 +33,7 @@ import Analytics from '../pages/Analytics';
 import AgentHistory from '../pages/AgentHistory';
 import Documentation from '../pages/Documentation';
 import Guides from '../pages/Guides';
+import Samples from '../pages/Samples';
 
 const Placeholder = ({ title }) => <Typography variant="h4">{title}</Typography>;
 
@@ -135,6 +136,8 @@ export default function Layout() {
               element = <Documentation />;
             } else if (item.path === '/guides') {
               element = <Guides />;
+            } else if (item.path === '/samples') {
+              element = <Samples />;
             }
             return <Route key={index} path={item.path} element={element} />;
           })}
