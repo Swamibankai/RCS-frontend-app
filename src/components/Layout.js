@@ -16,6 +16,7 @@ import ListItemText from '@mui/material/ListItemText';
 import { mainMenuItems, secondaryMenuItems } from './MenuItems';
 
 // Placeholder components for pages
+import ServiceAccount from '../pages/ServiceAccount';
 import Devices from '../pages/Devices';
 
 const Placeholder = ({ title }) => <Typography variant="h4">{title}</Typography>;
@@ -78,9 +79,15 @@ export default function Layout() {
       >
         <Toolbar />
         <Routes>
-          {mainMenuItems.map((item, index) => (
-            <Route key={index} path={item.path} element={item.path === '/devices' ? <Devices /> : <Placeholder title={item.text} />} />
-          ))}
+          {mainMenuItems.map((item, index) => {
+            let element = <Placeholder title={item.text} />;
+            if (item.path === '/devices') {
+              element = <Devices />;
+            } else if (item.path === '/service-account') {
+              element = <ServiceAccount />;
+            }
+            return <Route key={index} path={item.path} element={element} />;
+          })}
           {secondaryMenuItems.map((item, index) => (
             <Route key={index} path={item.path} element={<Placeholder title={item.text} />} />
           ))}
