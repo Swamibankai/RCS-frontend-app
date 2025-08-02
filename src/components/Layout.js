@@ -21,6 +21,7 @@ import Devices from '../pages/Devices';
 import AgentInformation from '../pages/AgentInformation';
 import Integrations from '../pages/Integrations';
 import PartnerAccount from '../pages/PartnerAccount';
+import Settings from '../pages/Settings';
 
 const Placeholder = ({ title }) => <Typography variant="h4">{title}</Typography>;
 
@@ -94,6 +95,8 @@ export default function Layout() {
               element = <Integrations />;
             } else if (item.path === '/partner-account') {
               element = <PartnerAccount />;
+            } else if (item.path === '/settings') {
+              element = <Settings />;
             }
             return <Route key={index} path={item.path} element={element} />;
           })}
