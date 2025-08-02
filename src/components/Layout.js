@@ -41,6 +41,7 @@ import Authentication from '../pages/Authentication';
 import MessagingFlow from '../pages/MessagingFlow';
 import Webhook from '../pages/Webhook';
 import RbmApiInteractionFlow from '../pages/RbmApiInteractionFlow';
+import RbmArchitecturalMessageFlow from '../pages/RbmArchitecturalMessageFlow';
 
 const Placeholder = ({ title }) => <Typography variant="h4">{title}</Typography>;
 
@@ -159,6 +160,8 @@ export default function Layout() {
               element = <Webhook />;
             } else if (item.path === '/rbm-api-interaction-flow') {
               element = <RbmApiInteractionFlow />;
+            } else if (item.path === '/rbm-architectural-message-flow') {
+              element = <RbmArchitecturalMessageFlow />;
             }
             return <Route key={index} path={item.path} element={element} />;
           })}
