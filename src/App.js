@@ -13,7 +13,7 @@ function App() {
   };
 
   return (
-    <Router>
+    <Router basename="/RCS-frontend-app">
       <Routes>
         <Route path="/login" element={<Login onLogin={handleLogin} />} />
         <Route 
