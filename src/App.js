@@ -1,13 +1,21 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route, Navigate, useLocation, useNavigate } from 'react-router-dom';
 import Layout from './components/Layout';
 import Login from './pages/Login';
 
 function App() {
-  // In a real app, you'd have a state to track authentication
   const [isAuthenticated, setIsAuthenticated] = React.useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
 
-  // A function to handle successful login
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    const redirectedPath = params.get('path');
+    if (redirectedPath) {
+      navigate(decodeURIComponent(redirectedPath), { replace: true });
+    }
+  }, [location.search, navigate]);
+
   const handleLogin = () => {
     setIsAuthenticated(true);
   };
