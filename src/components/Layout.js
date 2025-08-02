@@ -24,6 +24,7 @@ import PartnerAccount from '../pages/PartnerAccount';
 import Settings from '../pages/Settings';
 import Brands from '../pages/Brands';
 import Users from '../pages/Users';
+import Test from '../pages/Test';
 
 const Placeholder = ({ title }) => <Typography variant="h4">{title}</Typography>;
 
@@ -103,6 +104,8 @@ export default function Layout() {
               element = <Brands />;
             } else if (item.path === '/users') {
               element = <Users />;
+            } else if (item.path === '/test') {
+              element = <Test />;
             }
             return <Route key={index} path={item.path} element={element} />;
           })}
