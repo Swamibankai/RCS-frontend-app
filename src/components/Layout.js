@@ -27,6 +27,7 @@ import Users from '../pages/Users';
 import Test from '../pages/Test';
 import Deploy from '../pages/Deploy';
 import Verification from '../pages/Verification';
+import Launch from '../pages/Launch';
 
 const Placeholder = ({ title }) => <Typography variant="h4">{title}</Typography>;
 
@@ -112,6 +113,8 @@ export default function Layout() {
               element = <Deploy />;
             } else if (item.path === '/verification') {
               element = <Verification />;
+            } else if (item.path === '/launch') {
+              element = <Launch />;
             }
             return <Route key={index} path={item.path} element={element} />;
           })}
