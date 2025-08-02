@@ -29,6 +29,7 @@ import Deploy from '../pages/Deploy';
 import Verification from '../pages/Verification';
 import Launch from '../pages/Launch';
 import Manage from '../pages/Manage';
+import Analytics from '../pages/Analytics';
 
 const Placeholder = ({ title }) => <Typography variant="h4">{title}</Typography>;
 
@@ -118,6 +119,8 @@ export default function Layout() {
               element = <Launch />;
             } else if (item.path === '/manage') {
               element = <Manage />;
+            } else if (item.path === '/analytics') {
+              element = <Analytics />;
             }
             return <Route key={index} path={item.path} element={element} />;
           })}
