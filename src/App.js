@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate, useLocation, useNavigate } from 'react-router-dom';
+import { Routes, Route, Navigate, useLocation, useNavigate } from 'react-router-dom';
 import Layout from './components/Layout';
 import Login from './pages/Login';
 
@@ -21,15 +21,13 @@ function App() {
   };
 
   return (
-    <Router basename="/RCS-frontend-app">
-      <Routes>
-        <Route path="/login" element={<Login onLogin={handleLogin} />} />
-        <Route 
-          path="/*" 
-          element={isAuthenticated ? <Layout /> : <Navigate to="/login" />} 
-        />
-      </Routes>
-    </Router>
+    <Routes>
+      <Route path="/login" element={<Login onLogin={handleLogin} />} />
+      <Route 
+        path="/*" 
+        element={isAuthenticated ? <Layout /> : <Navigate to="/login" />} 
+      />
+    </Routes>
   );
 }
 
